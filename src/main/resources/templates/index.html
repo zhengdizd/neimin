@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+
+<form >
+    <ul>
+        <li><label><font color="#ff0000">* </font>请输入旧密码：<input type="text" name="oldPassword" id="oldPassword" required value="" class="ipt" /></label></li>
+        <li><label><font color="#ff0000">* </font>请输入新密码：<input type="text" name="newPassword" id="newPassword" required value="" class="ipt" /></label></li>
+        <li><label><font color="#ff0000">* </font>请重复新密码：<input type="text" name="reNewPassword" id="reNewPassword" required value="" class="ipt" /></label></li>
+        <li><input onclick="Login.initSubmit('${user.name}');"  value="确认提交" type="submit" /></li>
+        <li><input type="button" onclick="Login.initSubmit('${user.name}')"></li>
+    </ul>
+</form>
+<th:block th:replace="common/include"></th:block>
+<th:block th:replace="js/login"></th:block>
+
+
+</body>
+</html>

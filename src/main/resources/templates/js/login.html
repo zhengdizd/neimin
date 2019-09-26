@@ -1,0 +1,43 @@
+<script type="text/javascript">
+    var Login = function () {
+        return {
+            init: function () {
+                this.initEvent();
+            },
+            initEvent: function () {
+                alert("hello!");
+            },
+
+            initSubmit: function ajax_submit(username) {
+
+                var oldPassword = $("#oldPassword").val();//获取表单的输入值;
+                var newPassword = $("#newPassword").val();//获取表单的输入值;
+                var repeatPassword = $("#reNewPassword").val();
+                $.ajax({
+                    async: false,
+                    type: "post",  //数据提交方式（post/get）
+                    url: "/editPassword",  //提交到的url
+                    contentType : "application/x-www-form-urlencoded; charset=utf-8",
+                    data: {"username": username, "oldPassword": oldPassword, "newPassword": newPassword},//提交的数据
+                    dataType: "text",//返回的数据类型格式
+                    success: function (msg) {
+                        alert(msg.toString());
+
+                        if (msg == "msgs") {  //修改成功
+                            //修改成功处理代码...
+                            alert("修改成功")
+
+                        } else {  //修改失败
+                            //修改失败处理代码...
+                            alert("修改失败")
+                        }
+                    }
+                });
+            }
+
+        };
+    }();
+    $(document).ready(function () {
+        Login.init();
+    });
+</script>

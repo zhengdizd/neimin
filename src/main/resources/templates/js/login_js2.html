@@ -1,0 +1,44 @@
+<script>
+    var  Login = function() {
+        return{
+            init: function () {
+                //找到ewForm,id选择器
+                $('#' + 'newForm')
+                    .submit(function () {
+                        submitHandler()
+                    })
+            },
+            //提交参数
+            submitParam: {
+                "initForm": function () {
+                    return true;
+                },
+                "btnSubmitingVal": "登录中...",
+                "btnVal":"登录",
+                "btnId": "btnLogin",
+                //"ajaxType":"post";
+                "ajaxUrl": "/login.json",
+                //"formId" : "newForm",
+                //"successTip":"操作成功！",
+                "successCallback": function (resp) {
+
+                    if (!resp.success) {
+                        $("#spanErrMsg").html(resp.resultMsg);
+                        return;
+                    }
+
+                    location.href = "/index.html";
+
+                }
+            }
+        }
+    }
+
+    /**
+     * 当页面加载成功的时候后执行
+     */
+    $(document).ready(function () {
+        Login.init();
+    })
+
+</script>
